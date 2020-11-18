@@ -1,6 +1,6 @@
+import { RectButton } from "react-native-gesture-handler";
 import MapView from "react-native-maps";
 import styled from "styled-components/native";
-import { TouchableOpacity } from "react-native";
 
 export const Container = styled.View`
   background: #000333;
@@ -53,7 +53,7 @@ export const FooterText = styled.Text`
   line-height: 25px;
   font-family: Nunito_700Bold;
 `;
-export const CreateOrphanageButton = styled(TouchableOpacity)`
+export const CreateOrphanageButton = styled(RectButton)`
   width: 54px;
   height: 56px;
   background-color: #15c3d6;

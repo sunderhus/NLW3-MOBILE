@@ -22,6 +22,10 @@ const OrphanageMap: React.FC = () => {
     navigation.navigate("OrphanageDetails");
   }, []);
 
+  const handleNavigateToOrphanage = useCallback(() => {
+    navigation.navigate("SelectMapPosition");
+  }, []);
+
   return (
     <Container>
       <MapContainer
@@ -54,7 +58,10 @@ const OrphanageMap: React.FC = () => {
 
       <Footer>
         <FooterText> 2 orfanatos encontrados.</FooterText>
-        <CreateOrphanageButton onPress={() => {}}>
+        <CreateOrphanageButton
+          rippleColor="#15b6db"
+          onPress={handleNavigateToOrphanage}
+        >
           <Feather name="plus" size={20} color="#FFF" />
         </CreateOrphanageButton>
       </Footer>
