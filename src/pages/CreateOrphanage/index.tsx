@@ -1,19 +1,19 @@
+import { Feather } from "@expo/vector-icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import * as ImagePicker from "expo-image-picker";
 import React, { useState } from "react";
 import {
   ScrollView,
-  View,
   StyleSheet,
   Switch,
   Text,
   TextInput,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import { RectButton } from "react-native-gesture-handler";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import * as ImagePicker from "expo-image-picker";
 
-interface OrphanageDataRouteParams {
+interface IOrphanageDataRouteParams {
   position: { latitude: number; longitude: number };
 }
 
@@ -23,7 +23,7 @@ const CreateOrphanage: React.FC = () => {
 
   const [open_on_weekends, setOpenOnWeekends] = useState(false);
 
-  const params = route.params as OrphanageDataRouteParams;
+  const params = route.params as IOrphanageDataRouteParams;
   const position = params.position;
 
   function handleCreateOrphanage() {

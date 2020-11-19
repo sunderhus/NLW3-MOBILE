@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Dimensions, Text } from "react-native";
-
 import { useNavigation } from "@react-navigation/native";
-import { RectButton } from "react-native-gesture-handler";
-import MapView, { MapEvent, Marker } from "react-native-maps";
-
+import React, { useState } from "react";
+import { MapEvent, Marker } from "react-native-maps";
 import mapMarkerImg from "../../images/mapMarker.png";
+import { Container, Map, NextButton, NextButtonText } from "./styles";
 
 const SelectMapPosition: React.FC = () => {
   const navigation = useNavigation();
@@ -20,59 +17,27 @@ const SelectMapPosition: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <MapView
+    <Container>
+      <Map
         initialRegion={{
-          latitude: -27.2092052,
-          longitude: -49.6401092,
+          latitude: -30.0091973,
+          longitude: -51.1511223,
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}
         onPress={handleSelectMapPosition}
-        style={styles.mapStyle}
       >
         {!!position.latitude && (
           <Marker icon={mapMarkerImg} coordinate={position} />
         )}
-      </MapView>
+      </Map>
 
       {!!position.latitude && (
-        <RectButton style={styles.nextButton} onPress={handleNextStep}>
-          <Text style={styles.nextButtonText}>Próximo</Text>
-        </RectButton>
+        <NextButton onPress={handleNextStep}>
+          <NextButtonText>Próximo</NextButtonText>
+        </NextButton>
       )}
-    </View>
+    </Container>
   );
 };
 export default SelectMapPosition;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    position: "relative",
-  },
-
-  mapStyle: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-
-  nextButton: {
-    backgroundColor: "#15c3d6",
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    height: 56,
-
-    position: "absolute",
-    left: 24,
-    right: 24,
-    bottom: 40,
-  },
-
-  nextButtonText: {
-    fontFamily: "Nunito_800ExtraBold",
-    fontSize: 16,
-    color: "#FFF",
-  },
-});
