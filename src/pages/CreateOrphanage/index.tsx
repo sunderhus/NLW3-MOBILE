@@ -37,22 +37,21 @@ const CreateOrphanage: React.FC = () => {
   const [instructions, setInstructions] = useState("");
   const [opening_hours, setOpeningHours] = useState("");
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
-  const [images, setImages] = useState<Array<string>>([]);
-  const [updateList, setUpdateList] = useState(false);
+  const [images, setImages] = useState<string[]>([]);
   const navigateToHome = useCallback(
     () => navigation.navigate("OrphanageMap"),
     [navigation]
   );
 
-  const handleCreateOrphanage = useCallback(async () => {
+  async function handleCreateOrphanage() {
     try {
       const data = new FormData();
       data.append("name", name);
       data.append("about", about);
-      data.append("latitude", String(position.latitude));
-      data.append("longitude", String(position.longitude));
       data.append("instructions", instructions);
       data.append("opening_hours", opening_hours);
+      data.append("latitude", String(position.latitude));
+      data.append("longitude", String(position.longitude));
       data.append("open_on_weekends", String(open_on_weekends));
 
       images.map((image, index) =>
@@ -74,7 +73,7 @@ const CreateOrphanage: React.FC = () => {
     } catch (e) {
       Alert.alert("Ops!", "Revise os dados usados e tente novamente.");
     }
-  }, [navigateToHome]);
+  }
 
   const handleSelectImages = useCallback(async () => {
     const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -99,9 +98,7 @@ const CreateOrphanage: React.FC = () => {
     const { uri: selectedImage } = result;
 
     setImages([...images, selectedImage]);
-
-    setUpdateList(true);
-  }, [images]);
+  }, [images, ImagePicker]);
 
   const handleRemoveImage = useCallback((imageUri: string) => {
     setImages((existentImages) => {
@@ -127,22 +124,15 @@ const CreateOrphanage: React.FC = () => {
   }, [Keyboard]);
 
   return (
-    <RemoveKeyboardContainer onPress={handleRemoveKeyboard}>
+    <RemoveKeyboardContainer onPress={() => handleRemoveKeyboard}>
       <Container contentContainerStyle={{ padding: 24 }}>
         <Title>Dados</Title>
 
         <Label>Nome</Label>
-        <Input onChangeText={() => setName} />
+        <Input onChangeText={setName} />
 
         <Label>Sobre</Label>
-        <Input
-          onChangeText={() => setAbout}
-          style={[{ height: 110 }]}
-          multiline
-        />
-
-        {/* @TODO: implementar whatss <Label>Whatsapp</Label>
-      <Input /> */}
+        <Input onChangeText={setAbout} style={[{ height: 110 }]} multiline />
 
         <Label>Fotos ( {images.length} )</Label>
         {!!images && images.length > 0 && (
@@ -152,7 +142,6 @@ const CreateOrphanage: React.FC = () => {
           <FlatList
             data={images}
             horizontal={true}
-            extraData={updateList}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item, index) => String(`${item}-${index}`)}
             renderItem={({ item }) => renderItem(item)}
@@ -166,13 +155,13 @@ const CreateOrphanage: React.FC = () => {
 
         <Label>Instruções</Label>
         <Input
-          onChangeText={() => setInstructions}
+          onChangeText={setInstructions}
           style={[{ height: 110 }]}
           multiline
         />
 
         <Label>Horario de visitas</Label>
-        <Input onChangeText={() => setOpeningHours} />
+        <Input onChangeText={setOpeningHours} />
 
         <SwitchContainer>
           <Label>Atende final de semana?</Label>
