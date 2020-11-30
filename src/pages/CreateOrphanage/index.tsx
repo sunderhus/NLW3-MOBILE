@@ -132,10 +132,14 @@ const CreateOrphanage: React.FC = () => {
         <Title>Dados</Title>
 
         <Label>Nome</Label>
-        <Input onChangeText={setName} />
+        <Input onChangeText={() => setName} />
 
         <Label>Sobre</Label>
-        <Input onChangeText={setAbout} style={[{ height: 110 }]} multiline />
+        <Input
+          onChangeText={() => setAbout}
+          style={[{ height: 110 }]}
+          multiline
+        />
 
         {/* @TODO: implementar whatss <Label>Whatsapp</Label>
       <Input /> */}
@@ -162,13 +166,13 @@ const CreateOrphanage: React.FC = () => {
 
         <Label>Instruções</Label>
         <Input
-          onChangeText={setInstructions}
+          onChangeText={() => setInstructions}
           style={[{ height: 110 }]}
           multiline
         />
 
         <Label>Horario de visitas</Label>
-        <Input onChangeText={setOpeningHours} />
+        <Input onChangeText={() => setOpeningHours} />
 
         <SwitchContainer>
           <Label>Atende final de semana?</Label>
