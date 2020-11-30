@@ -81,7 +81,7 @@ const OrphanageDetails: React.FC = () => {
               <Image
                 key={id}
                 source={{
-                  uri: imagePath,
+                  uri: `${imagePath}`,
                 }}
               />
             );

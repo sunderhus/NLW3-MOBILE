@@ -1,11 +1,11 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import OrphanageMap from "./pages/OrphanagesMap";
-import OrphanageDetails from "./pages/OrphanageDetails";
-import SelectMapPosition from "./pages/SelectMapPosition";
-import CreateOrphanage from "./pages/CreateOrphanage";
-import Header from "./components/Header";
+import React from "react";
+import Header from "../components/Header";
+import CreateOrphanage from "../pages/CreateOrphanage";
+import OrphanageDetails from "../pages/OrphanageDetails";
+import OrphanageMap from "../pages/OrphanagesMap";
+import SelectMapPosition from "../pages/SelectMapPosition";
 
 const { Navigator, Screen } = createStackNavigator();
 const Routes: React.FC = () => {
