@@ -137,7 +137,7 @@ const CreateOrphanage: React.FC = () => {
         <Label>Sobre</Label>
         <Input onChangeText={setAbout} style={[{ height: 110 }]} multiline />
 
-        {/* <Label>Whatsapp</Label>
+        {/* @TODO: implementar whatss <Label>Whatsapp</Label>
       <Input /> */}
 
         <Label>Fotos ( {images.length} )</Label>
