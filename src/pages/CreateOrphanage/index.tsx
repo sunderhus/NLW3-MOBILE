@@ -143,6 +143,7 @@ const CreateOrphanage: React.FC = () => {
           <ImagesList
             data={images}
             horizontal={true}
+            extraData={images.length}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item, index) => String(`${item}-${index}`)}
             renderItem={({ item }) => renderItem(item)}
