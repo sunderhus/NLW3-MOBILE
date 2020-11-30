@@ -18,6 +18,7 @@ import {
   SwitchContainer,
   Title,
   UploadedImage,
+  ImagesList,
   UploadedWrapper,
 } from "./styles";
 
@@ -139,7 +140,7 @@ const CreateOrphanage: React.FC = () => {
           <Comment>(Segure para remover)</Comment>
         )}
         <SafeAreaView>
-          <FlatList
+          <ImagesList
             data={images}
             horizontal={true}
             showsHorizontalScrollIndicator={false}

@@ -1,4 +1,4 @@
-import { RectButton } from "react-native-gesture-handler";
+import { FlatList, RectButton } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
 export const RemoveKeyboardContainer = styled.TouchableWithoutFeedback`
@@ -53,6 +53,8 @@ export const ImagesInput = styled.TouchableOpacity`
   margin-bottom: 32px;
   margin-top: 16px;
 `;
+
+export const ImagesList = styled(FlatList as new () => FlatList<string>)``;
 
 export const UploadedWrapper = styled.TouchableOpacity``;
 
