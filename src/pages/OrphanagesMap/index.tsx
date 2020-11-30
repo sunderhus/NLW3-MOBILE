@@ -13,7 +13,7 @@ import {
 } from "./styles";
 
 import mapMarker from "../../images/mapMarker.png";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import api from "../../services/api";
 
 interface IOrphanage {
@@ -27,11 +27,11 @@ const OrphanageMap: React.FC = () => {
   const navigation = useNavigation();
   const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     api.get("orphanages").then((response) => {
       setOrphanages(response.data);
     });
-  }, []);
+  });
 
   const handleNavigateToOrphanageDetails = useCallback((id: number) => {
     navigation.navigate("OrphanageDetails", { id });

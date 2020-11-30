@@ -1,12 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { MapEvent, Marker } from "react-native-maps";
+import { LatLng, MapEvent, Marker } from "react-native-maps";
 import mapMarkerImg from "../../images/mapMarker.png";
 import { Container, Map, NextButton, NextButtonText } from "./styles";
 
 const SelectMapPosition: React.FC = () => {
   const navigation = useNavigation();
-  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
+  const [position, setPosition] = useState<LatLng>({
+    latitude: 0,
+    longitude: 0,
+  });
 
   function handleSelectMapPosition(event: MapEvent) {
     setPosition(event.nativeEvent.coordinate);
